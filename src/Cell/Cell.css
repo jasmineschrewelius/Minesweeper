@@ -1,0 +1,11 @@
+.showcell {
+    margin: 3px;
+    width: 90px;
+    height: 90px;
+    border: 1px solid black;
+    display: flex;
+    flex: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
