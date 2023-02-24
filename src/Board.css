@@ -7,13 +7,14 @@
     width:500px;
     height: 500px;
     background-color: grey;
+    position: relative;
 }
 
-.youfailed {
-    font-size: 500px;
-    color: black;
-}
-
-.youWon {
-    font-size: 50px;
+.results {
+    font-weight: bolder;
+    font-size: 60px;
+    color: red;
+    position: absolute;
+    top: 25%;
+    left: 20%;
 }

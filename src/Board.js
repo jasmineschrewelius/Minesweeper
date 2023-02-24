@@ -14,6 +14,7 @@ class Board extends React.Component {
       GameBoard : createBoard(board, mines), 
       Goal : (board - mines),
       Failed : false,
+      Finished : false,
       ClickedCells : 0,
     }
     
@@ -24,32 +25,35 @@ class Board extends React.Component {
     let newGameboard = [...this.state.GameBoard] // copy the old array
     newGameboard[index].visible=!newGameboard[index].visible // show cell
     this.setState({GameBoard:newGameboard}) // use setState to set state
-    this.state.ClickedCells++ // add to clickedcells
+    
 
     console.log(this.state.ClickedCells);
     console.log(this.state.Goal);
 
-    
-
     if(this.state.GameBoard[index].hasMine){ // if it is a mine
       console.log('YOU LOST');
-      return(
-        <div className='youfailed'>
-        {'You lost!'}
-        </div>
-      )}
-    if(this.state.ClickedCells === 18){
+        this.setState({Failed:true})   // change state to true
+      }
+
+    if(this.state.ClickedCells === this.state.Goal){
       console.log('YOU WON')
-      return(
-        <div className='youWon'>
-         {'You Won!'}
-        </div>
-      )
+      this.setState({Finished:true})   // change state to true
+    }
+    else {
+      this.state.ClickedCells++ // add to clickedcells
     }
     }
 
   render() {
-
+    const finished = this.state.Finished;
+    const failed = this.state.Failed;
+    let printout;
+    if(finished) {
+     printout = <div id="youWon" className='results'><p>YOU WON!</p></div>;
+    }
+    if(failed) {
+     printout = <div id="youLost" className='results'><p>YOU LOST!</p></div>;
+    }
 
 
   return (
@@ -60,6 +64,7 @@ class Board extends React.Component {
         )
       })
       }
+      {printout}
     </div>
     );
   }
