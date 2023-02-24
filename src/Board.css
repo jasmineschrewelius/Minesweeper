@@ -9,3 +9,11 @@
     background-color: grey;
 }
 
+.youfailed {
+    font-size: 500px;
+    color: black;
+}
+
+.youWon {
+    font-size: 50px;
+}

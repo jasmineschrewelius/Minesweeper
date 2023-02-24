@@ -1,16 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import './Cell.css';
 
 
 function Cell(props) {
 
- 
   
   let clickedCell= function() { // create clicked function using props
 
-    console.log(props.cell.hasMine)   // show if it has a mine or not
-    console.log(props.cell.numberOfNeighbouringMines) // show neighboring mines
-    console.log(props.cell.index)// show cell index
 
    props.onClick(props.cell.index)
    
@@ -21,7 +17,7 @@ function Cell(props) {
         <div className="homecell">
           {props.cell.hasMine && (
             <div className="showcell">
-              Bomb
+             BOMB
             </div>  
           )}
           {!props.cell.hasMine && props.cell.numberOfNeighbouringMines !==0 && (
